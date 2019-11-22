@@ -41,15 +41,10 @@ client.on("message", async message => {
 
                             yes.on("collect", v => {
                                 m.delete();
-                                    message.channel.send(`:ballot_box_with_check: | Done ... The Broadcast Message Has Been Sent For ${message.guild.memberCount} Members`).then(msg => msg.delete(5000));
+                                    message.channel.send(`Done  ${message.guild.memberCount} Members`).then(msg => msg.delete(5000));
                                         message.guild.members.forEach(member => {
-                                            let bc = new Discord.RichEmbed()
-                                            .setColor("RANDOM")
                                             .setThumbnail(message.author.avatarURL)
-                                            .setTitle("Broadcast")
-                                            .addField("Server", message.guild.name)
-                                            .addField("Sender", message.author.username)
-                                            .addField("Message", args);
+                                            .addField(args);
 
                                             member.sendEmbed(bc);
                                         });
